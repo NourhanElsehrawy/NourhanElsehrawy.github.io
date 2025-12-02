@@ -85,6 +85,16 @@ elementsToAnimate.forEach(el => {
     observer.observe(el);
 });
 
+// Disable animations for hero section
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+    const heroElements = heroSection.querySelectorAll('.hero-content, .hero-actions, .hero-social');
+    heroElements.forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+    });
+}
+
 // Stagger animation for milestones and achievements
 const staggerObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
@@ -125,15 +135,15 @@ if (yearElement) {
     yearElement.textContent = currentYear;
 }
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
-    }
-});
+// Parallax effect for hero section - DISABLED
+// window.addEventListener('scroll', () => {
+//     const scrolled = window.pageYOffset;
+//     const hero = document.querySelector('.hero');
+//     if (hero && scrolled < window.innerHeight) {
+//         hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+//         hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+//     }
+// });
 
 // Add reading progress indicator
 const createReadingProgress = () => {
